@@ -1,0 +1,25 @@
+{
+  "name": "d13-sassdoc-theme",
+  "private": true,
+  "version": "1.0.0-alpha.0",
+  "description": "Taking a stab at my own SassDoc theme",
+  "keywords": [
+    "sass",
+    "sassdoc",
+    "sassdoc-theme"
+  ],
+  "author": {
+    "name": "Keith Daulton",
+    "email": "kdaulton@d13design.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d13/d13-sassdoc-theme.git"
+  },
+	"bugs": {
+		"url": "https://github.com/d13/d13-sassdoc-theme/issues"
+	},
+  "license": "MIT",
+  "packageManager": "yarn@3.2.0",
+  "main": "index.js"
+}
