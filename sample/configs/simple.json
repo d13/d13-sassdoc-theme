@@ -1,0 +1,10 @@
+{
+  "verbose": true,
+  "package": {
+    "title": "D13",
+    "homepage": "https://d13.github.io",
+    "description": "D13's Sass Documentation"
+  },
+  "shortcutIcon": "https://d13.github.io/assets/media/branding/logo-tight.png",
+  "description": "This is a super cool site"
+}

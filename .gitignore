@@ -1,3 +1,5 @@
+# Yarn stuff
+
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -10,4 +12,13 @@
 #!.yarn/cache
 .pnp.*
 
+# --------
+
+# test directory
 dist
+
+# next.js
+.next
+
+public/*
+!public/images

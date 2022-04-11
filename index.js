@@ -1,6 +1,9 @@
 const { resolve } = require('path');
+const { exec } = require('shelljs');
 const { copy, writeJSON } = require('fs-extra');
-const { augmentData } = require('./build/data');
+const { augmentData, nextData } = require('./build/data');
+
+const isOnlyData = process.env.SASSDOC_THEME_DATA === 'true';
 
 /**
  * Actual theme function. It takes the destination directory `dest`
@@ -13,15 +16,43 @@ const { augmentData } = require('./build/data');
 module.exports = function (dest, ctx) {
   ctx = augmentData(ctx);
 
-  // const copyAssets = copy(resolve(__dirname, 'assets'), resolve(dest, 'assets'));
-  // if (ctx.shortcutIcon && ctx.shortcutIcon.type === 'internal' && !ctx.shortcutIcon.default) {
-  //   copyAssets.then(() => copy(ctx.shortcutIcon.path, resolve(dest, ctx.shortcutIcon.url)));
-  // }
-  const copyAssets = copy(ctx.shortcutIcon.path, resolve(dest, ctx.shortcutIcon.url));
+  const themeCtx = nextData(ctx);
+
+  const copyAssets = Promise.resolve();
+  if (!isOnlyData && ctx.shortcutIcon && ctx.shortcutIcon.type === 'internal' && !ctx.shortcutIcon.default) {
+    copyAssets.then(() => copy(ctx.shortcutIcon.path, resolve(dest, ctx.shortcutIcon.url)))
+    .then(() => {
+      console.log('d13-sassdoc-theme: assets copied');
+    });
+  }
+
+  const parsePath = resolve(__dirname, 'data/parsed.json');
+  const modelPath = resolve(__dirname, 'data/model.json');
 
   return Promise.all([
     copyAssets,
-    writeJSON(resolve(dest, 'model.json'), ctx, { spaces: 2 })
-    // TODO: build the content
-  ]);
+    Promise.all([
+      writeJSON(parsePath, ctx, { spaces: 2 }),
+      writeJSON(modelPath, themeCtx, { spaces: 2 })
+    ]).then(() => {
+      console.log('d13-sassdoc-theme: data generated');
+    }),
+  ]).then(() => {
+    if (isOnlyData) {
+      return Promise.all([
+        copy(parsePath, resolve(dest, 'parsed.json')),
+        copy(modelPath, resolve(dest, 'model.json'))
+      ]);
+    }
+
+    return new Promise((resolve, reject) => {
+      exec('yarn export', (code, stdout, stderr) => {
+        if (code !== 0) {
+          reject(stderr);
+        } else {
+          resolve();
+        }
+      });
+    }).then(() => copy(resolve(__dirname, 'dist/next'), dest))
+  });
 };

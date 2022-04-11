@@ -5,7 +5,64 @@ const dataDefaults = {
   display: {
     access: ['public', 'private'],
     alias: false,
-    watermark: true
+    watermark: true,
+    annotations: {
+      function: [
+        'description',
+        'parameter',
+        'return',
+        'example',
+        'throw',
+        'require',
+        'usedby',
+        'since',
+        'see',
+        'todo',
+        'link',
+        'author'
+      ],
+      mixin: [
+        'description',
+        'parameter',
+        'content',
+        'example',
+        'output',
+        'throw',
+        'require',
+        'usedby',
+        'since',
+        'see',
+        'todo',
+        'link',
+        'author'
+      ],
+      placeholder: [
+        'description',
+        'example',
+        'throw',
+        'require',
+        'usedby',
+        'since',
+        'see',
+        'todo',
+        'link',
+        'author'
+      ],
+      variable: [
+        'description',
+        'type',
+        'property',
+        'require',
+        'example',
+        'usedby',
+        'since',
+        'see',
+        'todo',
+        'link',
+        'author'
+      ],
+      css: ['description', 'example', 'since', 'see', 'todo', 'link', 'author']
+    }
   },
   groups: {
     undefined: 'General'
@@ -24,6 +81,22 @@ function augmentData(ctx) {
       ...ctx.groups
     }
   };
+
+  /**
+   * Group values of 'undefined' throw an error in next.js. To combat this,
+   * any instances of 'undefined' will be remapped to 'none', including
+   * the name override in the 'groups' option.
+   */
+  // ctx.groups.none = ctx.groups.undefined;
+  // delete ctx.groups.undefined;
+  // if (ctx.data) {
+  //   ctx.data.forEach((item) => {
+  //     const groupIndex = item.group.indexOf('undefined');
+  //     if (groupIndex > -1) {
+  //       item.group.splice(groupIndex, 1, 'none');
+  //     }
+  //   });
+  // }
 
   /**
    * These filters add some features to SassDoc by post-processing the data.
@@ -45,11 +118,11 @@ function augmentData(ctx) {
   if (!ctx.shortcutIcon) {
     ctx.shortcutIcon = {
       type: 'internal',
-      url: 'assets/images/favicon.png',
+      url: 'static/images/favicon.png',
       default: true
     };
   } else if (ctx.shortcutIcon.type === 'internal') {
-    ctx.shortcutIcon.url = `assets/images/${ctx.shortcutIcon.url}`;
+    ctx.shortcutIcon.url = `static/images/${ctx.shortcutIcon.url}`;
   }
 
   /**
@@ -86,6 +159,54 @@ function augmentData(ctx) {
   return ctx;
 }
 
+function nextData(ctx) {
+  const newCtx = {
+    site: {
+      meta: {
+        ...ctx.package,
+      },
+      display: ctx.display,
+      isEmpty: ctx.data.length < 1
+    }
+  };
+
+  if (ctx.shortcutIcon) {
+    newCtx.site.meta.favicon = ctx.shortcutIcon.url;
+  }
+
+  if (!newCtx.isEmpty && ctx.groups) {
+    newCtx.groups = Object.entries(ctx.groups).map(([group, groupName]) => {
+      const groupCtx = {
+        slug: group,
+        name: groupName
+      };
+
+      const typeData = ctx.dataByGroupAndType[group];
+      if (typeData) {
+        if (typeData.description) {
+          groupCtx.description = typeData.description;
+        }
+
+        groupCtx.types = Object.entries(typeData)
+          .filter(([type]) => type !== 'description')
+          .map(([type, items]) => {
+            const typeCtx = {
+              type,
+              items
+            };
+
+            return typeCtx;
+          });
+      }
+
+      return groupCtx;
+    });
+  }
+
+  return newCtx;
+}
+
 module.exports = {
-  augmentData
+  augmentData,
+  nextData
 };

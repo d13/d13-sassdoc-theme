@@ -1,0 +1,9 @@
+@use '../utilities';
+
+.visually-hidden {
+  @include utilities.visually-hidden;
+}
+
+.visually-hidden-focusable {
+  @include utilities.visually-hidden(true);
+}
