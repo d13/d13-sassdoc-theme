@@ -4,8 +4,10 @@ import StaticData from '../providers/static';
 
 export default function HomePage({ site, groups}) {
   return (<PageLayout meta={site.meta} display={site.display} groups={groups}>
-    <h1>Hello World</h1>
-    {site.meta.description && <div className="description" dangerouslySetInnerHTML={{ __html: site.meta.description }}></div>}
+    {site.meta.description ?
+      (<h1 className="description" dangerouslySetInnerHTML={{ __html: site.meta.description }}></h1>)
+      : (<h1>SassDocs</h1>)
+    }
   </PageLayout>);
 }
 

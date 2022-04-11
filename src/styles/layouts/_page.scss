@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    gap: 16px;
+    // gap: 16px;
   }
 
   &__sidebar {
@@ -37,15 +37,17 @@
     top: 0;
     max-height: 100vh;
     overflow-y: auto;
+    padding-right: 8px;
   }
 
   &__canvas {
+    background-color: var(--bg-primary);
     box-shadow: rgb(0 0 0 / 0.1) 0 1px 5px 0;
 
     flex: 1 1 auto;
     overflow: auto;
     border-radius: 4px;
-    scroll-behavior: smooth;
+    // scroll-behavior: smooth;
   }
 
   &__main {
