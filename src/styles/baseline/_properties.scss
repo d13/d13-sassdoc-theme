@@ -1,6 +1,29 @@
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #eeeeee;
+
   --text-primary: #121212;
+  --text-secondary: #555;
+
   --nav-primary-bg: rgb(0,0,0 / 2%);
+
+  --focus-ring-color: #2A84E6;
+
+  --utility-text-color: #fff;
+  --utility-background-color: #666;
+  --utility-border-color: var(--utility-background-color);
+  --utility-hover-color: #444;
+  --utility-active-color: #333;
+
+  --utility-low-text-color: #666;
+  --utility-low-background-color: #fff;
+  --utility-low-border-color: #555;
+  --utility-low-hover-color: #eee;
+  --utility-low-active-color: #ddd;
+
+  --utility-minimal-text-color: #666;
+  --utility-minimal-background-color: transparent;
+  --utility-minimal-border-color: transparent;
+  --utility-minimal-hover-color: #44444411;
+  --utility-minimal-active-color: #33333311;
 }

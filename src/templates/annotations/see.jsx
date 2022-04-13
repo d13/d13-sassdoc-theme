@@ -7,7 +7,7 @@ import Annotation from "../../components/annotation";
 export default function See({ data }) {
   return (
     <Annotation title="See">
-      <ul>
+      <ul className="list-unset">
         {/* TODO: need to filter by access and alias */}
         {data.map(({description, context, access, alias}, i) => (
           <li key={'see-' + i}>

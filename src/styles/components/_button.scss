@@ -1,0 +1,97 @@
+.button {
+  $block: &;
+
+  --button-text-color: var(--utility-text-color);
+  --button-background-color: var(--utility-background-color);
+  --button-border-color: var(--button-background-color);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 0;
+  height: 32px;
+  line-height: 24px;
+  font-size: 16px;
+
+  font-family: inherit;
+  appearance: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  border-radius: 16px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--button-border-color);
+
+  &__icon {
+    margin-left: 4px;
+    width: 24px;
+    height: 24px;
+    svg {
+      fill: currentColor;
+    }
+
+    #{$block}--icon-only & {
+      margin-right: 4px;
+    }
+  }
+
+  &__label {
+    margin-right: 4px;
+
+    &:only-child {
+      margin-left: 4px;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:focus {
+    outline-color: var(--focus-ring-color);
+  }
+
+  &:hover {
+    --button-background-color: var(--utility-hover-color);
+  }
+
+  &:active,
+  &--active {
+    --button-background-color: var(--utility-active-color);
+  }
+
+  &--low {
+    --button-text-color: var(--utility-low-text-color);
+    --button-background-color: var(--utility-low-background-color);
+    --button-border-color: var(--utility-low-border-color);
+
+    &:hover {
+      --button-background-color: var(--utility-low-hover-color);
+    }
+
+    &:active,
+    &#{$block}--active {
+      --button-background-color: var(--utility-low-active-color);
+    }
+  }
+
+  &--minimal {
+    --button-text-color: var(--utility-minimal-text-color);
+    --button-background-color: var(--utility-minimal-background-color);
+    --button-border-color: var(--utility-minimal-border-color);
+
+    &:hover {
+      --button-background-color: var(--utility-minimal-hover-color);
+    }
+
+    &:active,
+    &#{$block}--active {
+      --button-background-color: var(--utility-minimal-active-color);
+    }
+  }
+}

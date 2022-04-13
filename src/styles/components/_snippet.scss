@@ -1,0 +1,19 @@
+.snippet {
+  position: relative;
+
+  &__toggle {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+  }
+
+  &__block.language-scss {
+    margin: 0;
+  }
+
+  &--inline,
+  &--inline &__block {
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+}

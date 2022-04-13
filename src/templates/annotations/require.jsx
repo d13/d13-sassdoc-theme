@@ -8,7 +8,7 @@ import Annotation from "../../components/annotation";
 export default function Require({ data }) {
   return (
     <Annotation title="Require">
-      <ul>
+      <ul className="list-unset">
         {/* TODO: need to filter by access and alias */}
         {data.map(({ type, name, url, external = false, description, item }, i) => {
           const path = external ? url : item ? `#${item.context.type}-${item.context.name}` : `#${type}-${name}`;

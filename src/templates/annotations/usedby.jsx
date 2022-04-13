@@ -7,7 +7,7 @@ import Annotation from "../../components/annotation";
 export default function UsedBy({ data }) {
   return (
     <Annotation title="Used By">
-      <ul>
+      <ul className="list-unset">
         {/* TODO: need to filter by access and alias */}
         {/* TODO: add group url to href */}
         {data.map(({ context }, i) => (

@@ -4,6 +4,9 @@
 html {
   box-sizing: border-box;
   // scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   * {
 
@@ -20,4 +23,93 @@ body {
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
+}
+
+
+// inline content
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+// forms
+
+
+// interactive
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+// code like things
+
+pre {
+  font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  font-size: 1em;
+}
+
+code,
+kbd,
+samp {
+  font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+
+  font-size: 1em;
+}
+
+// tables
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+thead {
+  th, td {
+    color: var(--text-secondary);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--bg-secondary);
+  }
 }

@@ -9,7 +9,7 @@ import Snippet from "../../components/snippet";
 export default function Example({ data }) {
   return (
     <Annotation title="Example">
-      <ul>
+      <ul className="list-unset">
         {/* TODO: need to filter by access and alias */}
         {data.map(({type, description, code}, i) => (
           <li key={'example-' + i}>

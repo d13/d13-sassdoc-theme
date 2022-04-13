@@ -23,9 +23,10 @@
   position: relative;
   &__toggle {
     position: absolute;
-    right: 8px;
-    top: 6px;
+    right: 4px;
+    top: 2px;
   }
+
   &__name {
     color: #666;
     font-weight: bold;
@@ -34,11 +35,20 @@
       bottom: 8px;
     }
   }
+
   &__items {
     --nav-level: 2;
   }
 
-  &__toggle[aria-expanded="false"] + &__items {
+  &__toggle + &__name {
+    padding-right: 48px;
+  }
+
+  &__toggle:hover + &__name {
+    background-color: rgb(0 0 0 / 4%);
+  }
+
+  &__toggle[aria-expanded="false"] ~ &__items {
     display: none;
   }
 }
@@ -47,8 +57,8 @@
   position: relative;
   &__toggle {
     position: absolute;
-    right: 8px;
-    top: 3px;
+    right: 4px;
+    top: 0px;
   }
   &__name {
     font-size: 0.88rem;
@@ -63,7 +73,15 @@
     --nav-level: 3;
   }
 
-  &__toggle[aria-expanded="false"] + &__items {
+  &__toggle + &__name {
+    padding-right: 48px;
+  }
+
+  &__toggle:hover + &__name {
+    background-color: rgb(0 0 0 / 4%);
+  }
+
+  &__toggle[aria-expanded="false"] ~ &__items {
     display: none;
   }
 }

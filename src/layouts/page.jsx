@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import ToggleButton from '../components/toggle-button';
 import Head from '../templates/parts/head';
 import { SideNav, SideNavGroup, SideNavType, SideNavItem } from '../templates/parts/side-nav';
 
@@ -13,11 +14,11 @@ export default function PageLayout({ title, meta = {}, groups = [], display = {}
       <Head {...meta} page={title} />
       <div className="page">
         <header className="page__header">
-          <Link href="/"><a>{projectTitle}{meta.version && ( <span>- v{meta.version}</span>)}<span className="visually-hidden">, back to home</span></a></Link>
+          <Link href="/"><a class="page__site">{projectTitle}{meta.version && ( <span class="page__version">- v{meta.version}</span>)}<span className="visually-hidden">, back to home</span></a></Link>
         </header>
         <div className="page__container">
           <div className="page__sidebar">
-            <button type="button" aria-controls="main-menu" aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>toggle sidebar</button>
+            {/* <ToggleButton aria-controls="main-menu" aria-expanded={expanded} on={expanded} direction="right" emphasis="low" onClick={() => setExpanded(!expanded)}>toggle sidebar</ToggleButton> */}
             <div className="page__menu">
               <SideNav id="main-menu" aria-label="Main Menu">
                 {groups.map(({slug, name, types}) => (

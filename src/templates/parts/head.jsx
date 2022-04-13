@@ -8,6 +8,7 @@ export default function HeadPart({ page, name, title, favicon }) {
   return (
     <Head>
       <title>{projectTitle}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <meta property="og:title" content={projectTitle} />
       <meta property="og:type" content="website" />

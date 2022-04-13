@@ -4,7 +4,7 @@ import Annotation from "../../components/annotation";
 export default function Link({ data }) {
   return (
     <Annotation title="Link">
-      <ul>
+      <ul className="list-unset">
         {data.map(({ url, caption='Link' }, i) => (
           <li key={'link-' + i}>
             <NextLink href={url}>

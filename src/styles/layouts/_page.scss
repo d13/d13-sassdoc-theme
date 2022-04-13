@@ -1,5 +1,7 @@
 .page {
   max-width: 1440px;
+  min-height: 100vh;
+
   padding: {
     left: 8px;
     right: 8px;
@@ -9,6 +11,9 @@
     right: auto;
   }
 
+  display: flex;
+  flex-direction: column;
+
   &__header {
     padding: 16px 8px;
     display: flex;
@@ -17,7 +22,19 @@
     align-items: center;
   }
 
+  &__site {
+    font-size: 24px;
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  &__version {
+    color: var(--text-secondary);
+  }
+
   &__container {
+    margin-bottom: 16px;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -28,7 +45,7 @@
     flex: none;
     // display: flex;
     // flex-direction: column;
-    width: 240px;
+    width: 320px;
     transition: margin-left ease 250ms;
   }
 
@@ -51,10 +68,12 @@
   }
 
   &__main {
-    margin: 16px;
+    margin: 16px 16px 32px;
   }
 
   &__footer {
+    margin-top: auto;
     padding: 16px 0;
+    font-size: 12px;
   }
 }
