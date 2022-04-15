@@ -14,7 +14,7 @@ export default function PageLayout({ title, meta = {}, groups = [], display = {}
       <Head {...meta} page={title} />
       <div className="page">
         <header className="page__header">
-          <Link href="/"><a class="page__site">{projectTitle}{meta.version && ( <span class="page__version">- v{meta.version}</span>)}<span className="visually-hidden">, back to home</span></a></Link>
+          <Link href="/"><a className="page__site">{projectTitle}{meta.version && ( <span className="page__version">- v{meta.version}</span>)}<span className="visually-hidden">, back to home</span></a></Link>
         </header>
         <div className="page__container">
           <div className="page__sidebar">

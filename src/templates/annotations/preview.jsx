@@ -3,7 +3,7 @@ import Snippet from '../../components/snippet';
 
 export default function Preview({ context, parameter, type }) {
 
-  const argumentList = list => list.map(({name}) => `$${name}`).join(', ');
+  const argumentList = list => list && list.map(({name}) => `$${name}`).join(', ') || '';
 
   const opener = useMemo(() => {
     let prefix = '';

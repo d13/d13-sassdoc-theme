@@ -6,14 +6,14 @@ export default class StaticData {
   }
 
   static get groups() {
-    return data.groups || [];
+    return (data.groups || []).filter(group => group.types && group.types.length > 0);
   }
 
   static get paths() {
-    if (!data.groups) {
+    if (!this.groups) {
       return [];
     }
 
-    return data.groups.map(({ slug }) => ({ params: { slug } }));
+    return this.groups.map(({ slug }) => ({ params: { slug } }));
   }
 }

@@ -22,3 +22,6 @@ dist
 
 public/*
 !public/images
+
+# OS nonsense
+.DS_Store
