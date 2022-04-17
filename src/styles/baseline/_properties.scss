@@ -1,29 +1,114 @@
-:root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #eeeeee;
+@use 'sass:map';
+@use '../utilities';
 
-  --text-primary: #121212;
-  --text-secondary: #555;
+:root {
+  --container-primary: #ffffff;
+  --container-secondary: #{map.get(utilities.$neutral, '100')};
+  --container-03: #{map.get(utilities.$neutral, '400')};
+  --container-04: #{map.get(utilities.$neutral, '500')};
+
+  --container-danger-background-color: #{map.get(utilities.$fire-engine, '100')};
+  --container-danger-border-color: #{map.get(utilities.$fire-engine, '600')};
+  --container-danger-text-color: #{map.get(utilities.$fire-engine, '900')};
+
+  --text-primary: #{map.get(utilities.$neutral, '900')};
+  --text-secondary: #{map.get(utilities.$neutral, '600')};
+  --text-link-color: #{map.get(utilities.$blue-de-france, '600')};
+
+  --elevation-color: rgb(0 0 0 / 16%);
+
+  --divider-color: #{map.get(utilities.$neutral, '100')};
 
   --nav-primary-bg: rgb(0,0,0 / 2%);
 
-  --focus-ring-color: #2A84E6;
+  --text-highlight-color: #{map.get(utilities.$blue-de-france, '100')};
+  --focus-ring-color: #{map.get(utilities.$blue-de-france, '500')};
 
   --utility-text-color: #fff;
-  --utility-background-color: #666;
+  --utility-background-color: #{map.get(utilities.$neutral, '600')};
   --utility-border-color: var(--utility-background-color);
-  --utility-hover-color: #444;
-  --utility-active-color: #333;
+  --utility-hover-color: #{map.get(utilities.$neutral, '700')};
+  --utility-active-color: #{map.get(utilities.$neutral, '800')};
 
-  --utility-low-text-color: #666;
+  --utility-low-text-color: #{map.get(utilities.$neutral, '600')};
   --utility-low-background-color: #fff;
-  --utility-low-border-color: #555;
-  --utility-low-hover-color: #eee;
-  --utility-low-active-color: #ddd;
+  --utility-low-border-color: #{map.get(utilities.$neutral, '700')};
+  --utility-low-hover-color: #{map.get(utilities.$neutral, '100')};
+  --utility-low-active-color: #{map.get(utilities.$neutral, '200')};
 
-  --utility-minimal-text-color: #666;
+  --utility-minimal-text-color: #{map.get(utilities.$neutral, '600')};
   --utility-minimal-background-color: transparent;
   --utility-minimal-border-color: transparent;
-  --utility-minimal-hover-color: #44444411;
-  --utility-minimal-active-color: #33333311;
+  --utility-minimal-hover-color: #{map.get(utilities.$neutral, '700')}11;
+  --utility-minimal-active-color: #{map.get(utilities.$neutral, '800')}11;
+
+  --menu-category-text-color: #{map.get(utilities.$neutral, '600')};
+  --menu-subcategory-text-color: #{map.get(utilities.$neutral, '700')};
+  --menu-item-text-color: #{map.get(utilities.$neutral, '800')};
+  --menu-hover-color: rgb(0 0 0 / 4%);
+
+  --input-text-color: #{map.get(utilities.$neutral, '900')};
+  --input-background-color: #fff;
+  --input-border-color: #{map.get(utilities.$neutral, '300')};
+  --input-divider-color: #{map.get(utilities.$neutral, '100')};
+  --input-hover-color: #{map.get(utilities.$neutral, '50')};
+  --input-elevation-color: var(--elevation-color);
+
+  --line-height: 1.25;
+  --base-size: 16px;
+  --size-5: 0.33rem;
+  --size-4: 0.41rem;
+  --size-3: 0.51rem;
+  --size-2: 0.64rem;
+  --size-1: 0.8rem;
+  --size0: 1rem;
+  --size1: 1.25rem;
+  --size2: 1.56rem;
+  --size3: 1.95rem;
+  --size4: 2.44rem;
+  --size5: 3.05rem;
+  --size6: 3.81rem;
+  --size7: 4.77rem;
+}
+
+@mixin theme-dark() {
+  --container-primary: #000000;
+  --container-secondary: #{map.get(utilities.$neutral, '900')};
+  --container-03: #{map.get(utilities.$neutral, '400')};
+  --container-04: #{map.get(utilities.$neutral, '300')};
+
+  --container-danger-background-color: #{map.get(utilities.$fire-engine, '900')};
+  --container-danger-text-color: #{map.get(utilities.$fire-engine, '50')};
+
+  --text-primary: #ffffff;
+  --text-secondary: #{map.get(utilities.$neutral, '300')};
+  --text-link-color: #{map.get(utilities.$blue-de-france, '300')};
+
+  --elevation-color: rgb(255 255 255 / 16%);
+
+  --text-highlight-color: #{map.get(utilities.$blue-de-france, '700')};
+  --focus-ring-color: #{map.get(utilities.$blue-de-france, '400')};
+
+  --menu-category-text-color: #{map.get(utilities.$neutral, '400')};
+  --menu-subcategory-text-color: #{map.get(utilities.$neutral, '300')};
+  --menu-item-text-color: #{map.get(utilities.$neutral, '200')};
+  --menu-hover-color: rgb(255 255 255 / 4%);
+
+  --input-text-color: #{map.get(utilities.$neutral, '100')};
+  --input-background-color: #000;
+  --input-border-color: #{map.get(utilities.$neutral, '700')};
+  --input-divider-color: #{map.get(utilities.$neutral, '900')};
+  --input-hover-color: #{map.get(utilities.$neutral, '900')};
+  --input-elevation-color: var(--elevation-color);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // @include theme-dark;
+  }
+}
+
+.is-dark {
+  @include theme-dark;
 }

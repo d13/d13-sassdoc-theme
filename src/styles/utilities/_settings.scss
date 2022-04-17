@@ -1,0 +1,67 @@
+////
+/// Variables for utility styles
+////
+
+/// Blue de France color ramp
+/// @type color
+/// @access private
+$blue-de-france: (
+  '900': #041c38,
+  '800': #0a315b,
+  '700': #134780,
+  '600': #1c5fa8,
+  '500': #2578d2,
+  '400': #3e92f7,
+  '300': #7facf9,
+  '200': #aec7fb,
+  '100': #d8e3fd,
+  '50': #ecf1fe,
+);
+
+/// Fire Engine color ramp
+/// @type color
+/// @access private
+$fire-engine: (
+  '900': #3e0506,
+  '800': #640c0f,
+  '700': #8d1519,
+  '600': #b81f24,
+  '500': #e5292f,
+  '400': #f55e60,
+  '300': #f68d8f,
+  '200': #f9b5b6,
+  '100': #fbdbdb,
+  '50': #fdeded,
+);
+
+/// Oxford color ramp
+/// @type color
+/// @access private
+$oxford: (
+  '900': #181c21,
+  '800': #2b3139,
+  '700': #3f4752,
+  '600': #545f6d,
+  '500': #6b7889,
+  '400': #8292a7,
+  '300': #9dadc1,
+  '200': #bdc7d5,
+  '100': #dee3ea,
+  '50': #eff1f4,
+);
+
+/// Neutral color ramp
+/// @type color
+/// @access private
+$neutral: (
+  '900': #1b1b1b,
+  '800': #303030,
+  '700': #474747,
+  '600': #5e5e5e,
+  '500': #777777,
+  '400': #919191,
+  '300': #ababab,
+  '200': #c6c6c6,
+  '100': #e2e2e2,
+  '50': #f1f1f1,
+);

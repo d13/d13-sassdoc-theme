@@ -3,13 +3,14 @@
 
 html {
   box-sizing: border-box;
-  // scroll-behavior: smooth;
+  scroll-behavior: smooth;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: var(--base-size);
+  line-height: var(--line-height);
 
   * {
-
     &,
     &::before,
     &::after {
@@ -21,12 +22,25 @@ html {
 body {
   margin: 0;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
-  background-color: var(--bg-secondary);
+  background-color: var(--container-secondary);
   color: var(--text-primary);
 }
 
-
 // inline content
+
+:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid var(--focus-ring-color);
+}
+
+::selection,
+mark {
+  background-color: var(--text-highlight-color);
+}
+
+a {
+  color: var(--text-link-color);
+}
 
 hr {
   box-sizing: content-box;
@@ -70,6 +84,49 @@ sup {
   top: -0.5em;
 }
 
+// block content
+
+h1 {
+  font-size: var(--size5);
+  margin-top: 0;
+  margin-bottom: var(--size2);
+}
+h2 {
+  font-size: var(--size4);
+  margin: {
+    top: var(--size2);
+    bottom: var(--size2);
+  }
+}
+h3 {
+  font-size: var(--size3);
+  margin: {
+    top: var(--size2);
+    bottom: var(--size2);
+  }
+}
+h4 {
+  font-size: var(--size2);
+  margin: {
+    top: var(--size1);
+    bottom: var(--size1);
+  }
+}
+h5 {
+  font-size: var(--size1);
+  margin: {
+    top: var(--size0);
+    bottom: var(--size0);
+  }
+}
+h6 {
+  font-size: var(--size0);
+  margin: {
+    top: var(--size0);
+    bottom: var(--size0);
+  }
+}
+
 // forms
 
 
@@ -94,7 +151,6 @@ code,
 kbd,
 samp {
   font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-
   font-size: 1em;
 }
 
@@ -110,6 +166,6 @@ thead {
   th, td {
     color: var(--text-secondary);
     padding-bottom: 8px;
-    border-bottom: 2px solid var(--bg-secondary);
+    border-bottom: 2px solid var(--container-secondary);
   }
 }

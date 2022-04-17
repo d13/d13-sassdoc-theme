@@ -3,8 +3,9 @@ import Link from 'next/link';
 import ToggleButton from '../components/toggle-button';
 import Head from '../templates/parts/head';
 import { SideNav, SideNavGroup, SideNavType, SideNavItem } from '../templates/parts/side-nav';
+import SiteSearch from '../templates/parts/site-search';
 
-export default function PageLayout({ title, meta = {}, groups = [], display = {}, children }) {
+export default function PageLayout({ title, meta = {}, navigation = [], display = {}, children }) {
   const [expanded, setExpanded] = useState(true);
   const defaultTitle = 'SassDoc';
   const projectTitle = useMemo(() => `${meta.title || meta.name || defaultTitle}`, [meta]);
@@ -14,14 +15,15 @@ export default function PageLayout({ title, meta = {}, groups = [], display = {}
       <Head {...meta} page={title} />
       <div className="page">
         <header className="page__header">
-          <Link href="/"><a className="page__site">{projectTitle}{meta.version && ( <span className="page__version">- v{meta.version}</span>)}<span className="visually-hidden">, back to home</span></a></Link>
+          <Link href="/"><a className="page__site">{projectTitle}{meta.version && (<>{' '}<span className="page__version">- v{meta.version}</span></>)}<span className="visually-hidden">, back to home</span></a></Link>
+          <div className="page__search"><SiteSearch id="site-search" navigation={navigation} /></div>
         </header>
         <div className="page__container">
           <div className="page__sidebar">
             {/* <ToggleButton aria-controls="main-menu" aria-expanded={expanded} on={expanded} direction="right" emphasis="low" onClick={() => setExpanded(!expanded)}>toggle sidebar</ToggleButton> */}
             <div className="page__menu">
               <SideNav id="main-menu" aria-label="Main Menu">
-                {groups.map(({slug, name, types}) => (
+                {navigation.map(({slug, name, types}) => (
                   <SideNavGroup url={`/group/${slug}`} name={name} key={`nav-${slug}`}>
                     {types.map(({type, items}) => (
                       <SideNavType url={`/group/${slug}#${type}`} name={type} key={`nav-${slug}-${type}`}>
@@ -46,7 +48,7 @@ export default function PageLayout({ title, meta = {}, groups = [], display = {}
             ) : (
               <span>{projectTitle}</span>
             )}
-            {meta.version && <span>- v{meta.version}</span>}
+            {meta.version && (<>{' '}<span>- v{meta.version}</span></>)}
             {meta.license && (
               <span>
                 , under{' '}

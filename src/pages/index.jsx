@@ -1,21 +1,20 @@
-import Link from 'next/link';
-import PageLayout from '../layouts/page';
 import StaticData from '../providers/static';
 
-export default function HomePage({ site, groups}) {
-  return (<PageLayout meta={site.meta} display={site.display} groups={groups}>
-    {site.meta.description ?
-      (<div dangerouslySetInnerHTML={{ __html: site.meta.description }}></div>)
+export default function HomePage({ page, site }) {
+  return (<>
+    {page ? (<div dangerouslySetInnerHTML={{ __html: page }} />) : site.meta.description ?
+      (<div dangerouslySetInnerHTML={{ __html: site.meta.description }} />)
       : (<h1>Sass Documentation</h1>)
     }
-  </PageLayout>);
+  </>);
 }
 
 export async function getStaticProps() {
   return {
     props: {
       site: StaticData.site,
-      groups: StaticData.groups
+      navigation: StaticData.navigation,
+      page: StaticData.description
     }
   };
 }

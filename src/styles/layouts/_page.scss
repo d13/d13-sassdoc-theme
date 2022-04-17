@@ -20,9 +20,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
   }
 
   &__site {
+    flex-shrink: 0;
     font-size: 24px;
     color: inherit;
     font-weight: bold;
@@ -30,7 +32,13 @@
   }
 
   &__version {
+    font-size: 16px;
     color: var(--text-secondary);
+  }
+
+  &__search {
+    flex: 1;
+    max-width: 300px;
   }
 
   &__container {
@@ -58,7 +66,7 @@
   }
 
   &__canvas {
-    background-color: var(--bg-primary);
+    background-color: var(--container-primary);
     box-shadow: rgb(0 0 0 / 0.1) 0 1px 5px 0;
 
     flex: 1 1 auto;

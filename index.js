@@ -56,3 +56,22 @@ module.exports = function (dest, ctx) {
     }).then(() => copy(resolve(__dirname, 'dist/next'), dest))
   });
 };
+
+module.exports.annotations = [
+  () => {
+    return {
+      name: 'installation',
+      parse(text) {
+        return text.trim();
+      }
+    };
+  },
+  () => {
+    return {
+      name: 'imports',
+      parse(text) {
+        return text.trim();
+      }
+    };
+  }
+];
