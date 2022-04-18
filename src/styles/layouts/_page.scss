@@ -23,6 +23,16 @@
     gap: 16px;
   }
 
+  &__skip {
+    position: absolute;
+    display: inline-block;
+    padding: var(--size-4);
+    background-color: var(--container-primary);
+    border: 1px solid var(--container-04);
+    top: 6px;
+    left: 6px;
+  }
+
   &__site {
     flex-shrink: 0;
     font-size: 24px;
@@ -51,8 +61,6 @@
 
   &__sidebar {
     flex: none;
-    // display: flex;
-    // flex-direction: column;
     width: 320px;
     transition: margin-left ease 250ms;
   }
