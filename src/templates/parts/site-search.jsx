@@ -40,13 +40,13 @@ export default function SiteSearch({ id, navigation = [] }) {
 
   return (<div className={classNames('search site-search', !!query.length && 'is-populated', !!results.length && 'has-results')}>
     <label className="search__label" htmlFor={id}>Search</label>
-    <input className="search__input" id={id} type="search" placeholder=" " onChange={(e) => setQuery(e.target.value)} />
+    <input className="search__input" id={id} type="search" value={query} placeholder=" " onChange={(e) => setQuery(e.target.value)} />
     <div className="search__results">
       <ul className="search__list">
         {!results.length && <li className="search__info">No results</li>}
         {results.map(({ group, type, name, url }, i) => (
           <li className="search__item" key={'search-' + i}>
-            <Link href={url}><a className="site-search__link">(<code>{type}</code>) {group ? `[${group}] ` : ''}{name}</a></Link>
+            <Link href={url}><a className="site-search__link" onClick={() => setQuery('')}>(<code>{type}</code>) {group ? `[${group}] ` : ''}{name}</a></Link>
           </li>
         ))}
       </ul>
