@@ -16,6 +16,11 @@
     &:hover {
       background-color: var(--menu-hover-color);
     }
+
+    &.is-active {
+      font-weight: bolder;
+      color: var(--menu-active-text-color);
+    }
   }
 }
 
@@ -33,6 +38,11 @@
     padding: {
       top: 8px;
       bottom: 8px;
+    }
+
+    &.is-related,
+    &.is-active {
+      background-color: var(--menu-active-color);
     }
   }
 

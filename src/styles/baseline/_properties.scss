@@ -46,6 +46,8 @@
   --menu-subcategory-text-color: #{map.get(utilities.$neutral, '700')};
   --menu-item-text-color: #{map.get(utilities.$neutral, '800')};
   --menu-hover-color: rgb(0 0 0 / 4%);
+  --menu-active-color: rgb(255 255 255 / 36%);
+  --menu-active-text-color: #{map.get(utilities.$neutral, '900')};
 
   --input-text-color: #{map.get(utilities.$neutral, '900')};
   --input-background-color: #fff;
@@ -72,7 +74,7 @@
 }
 
 @mixin theme-dark() {
-  --container-primary: #000000;
+  --container-primary: #090909;
   --container-secondary: #{map.get(utilities.$neutral, '900')};
   --container-03: #{map.get(utilities.$neutral, '400')};
   --container-04: #{map.get(utilities.$neutral, '300')};
@@ -93,9 +95,11 @@
   --menu-subcategory-text-color: #{map.get(utilities.$neutral, '300')};
   --menu-item-text-color: #{map.get(utilities.$neutral, '200')};
   --menu-hover-color: rgb(255 255 255 / 4%);
+  --menu-active-color: #121212;
+  --menu-active-text-color: #{map.get(utilities.$neutral, '50')};
 
   --input-text-color: #{map.get(utilities.$neutral, '100')};
-  --input-background-color: #000;
+  --input-background-color: #090909;
   --input-border-color: #{map.get(utilities.$neutral, '700')};
   --input-divider-color: #{map.get(utilities.$neutral, '900')};
   --input-hover-color: #{map.get(utilities.$neutral, '900')};

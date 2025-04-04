@@ -15,6 +15,7 @@ export default function PageLayout({ title, meta = {}, navigation = [], display 
       <Head {...meta} page={title} />
       <div className="page">
         <header className="page__header">
+          <a href="#main" className="visually-hidden-focusable page__skip">Skip to content</a>
           <Link href="/"><a className="page__site">{projectTitle}{meta.version && (<>{' '}<span className="page__version">- v{meta.version}</span></>)}<span className="visually-hidden">, back to home</span></a></Link>
           <div className="page__search"><SiteSearch id="site-search" navigation={navigation} /></div>
         </header>
@@ -38,7 +39,7 @@ export default function PageLayout({ title, meta = {}, navigation = [], display 
             </div>
           </div>
           <div className="page__canvas">
-            <main id="main" className="page__main" role="main">{children}</main>
+            <main id="main" className="page__main" role="main" tabIndex="-1">{children}</main>
           </div>
         </div>
         <footer className="page__footer">
